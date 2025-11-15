@@ -35,9 +35,26 @@ kubectl directpv discover --all
 ```
 kubectl directpv init drives.yaml --dangerous
 ```
+# 3. MinIO Operator 설치
+Helm으로 설치한다.
+```
+# Helm 저장소 추가
+helm repo add minio-operator https://operator.min.io
 
+# 저장소 업데이트
+helm repo update
 
+# MinIO Operator 설치
+helm install \
+  --namespace minio-operator \
+  --create-namespace \
+  operator minio-operator/operator
+```
 
+설치 확인:
+```
+kubectl get pods -n minio-operator
+```
 
 
 
