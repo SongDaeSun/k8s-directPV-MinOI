@@ -78,14 +78,22 @@ kubectl create namespace minio-tenant
 ```
 
 ## 4-2. Secret 생성
-MINIO_ROOT_USER, MINIO_ROOT_PASSWORD은 실재 사용환경에서는 변경하도록 하자.
+MINIO_ROOT_USER, MINIO_ROOT_PASSWORD은 실재 사용환경에서는 변경하도록 하자.  
+yaml로 생성하는 것을 추천한다.  
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: minio-creds-secret
+  namespace: minio-tenant
+type: Opaque
+stringData:
+  config.env: |
+    export MINIO_ROOT_USER="admin"
+    export MINIO_ROOT_PASSWORD="admin123456"
 ```
-# MinIO 인증 Secret 생성
-kubectl create secret generic minio-creds-secret \
-  --from-literal=config.env="export MINIO_ROOT_USER=admin
-export MINIO_ROOT_PASSWORD=admin123456" \
-  -n minio-tenant
-```
+kubectl apply -f minio-cred-secret.yaml
+
 
 ## 4-3. CRD생성
 ```
