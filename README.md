@@ -170,3 +170,13 @@ kubectl get pvc -n minio-tenant
 kubectl directpv list volumes
 ```
 
+# 5. 행벅! Object Storage를 사용하자!
+```
+$ kubectl get tenant -n minio-tenant
+```
+
+```
+NAME            STATE         HEALTH   AGE
+minio-cluster   Initialized   green    13m
+```
+위 결과가 나오면 성공이다.
