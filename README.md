@@ -91,6 +91,9 @@ stringData:
   config.env: |
     export MINIO_ROOT_USER="admin"
     export MINIO_ROOT_PASSWORD="admin123456"
+  # Console용 추가
+  accesskey: "admin"
+  secretkey: "admin123456"
 ```
 kubectl apply -f minio-cred-secret.yaml
 
